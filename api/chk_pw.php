@@ -1,3 +1,8 @@
 <?php include_once "db.php";
 
-echo $Mem->count($_GET);
+if($Mem->count($_GET)){
+    echo 1;
+    $_SESSION['mem']=$_GET['acc'];
+}else{
+    echo 0;
+}

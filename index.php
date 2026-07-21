@@ -32,7 +32,17 @@
             </span>
                     </div>
         <div id="right">
-        	        </div>
+        <?php
+        $do=$_GET['do']??'main';
+        $file="./front/{$do}.php";
+        if(file_exists($file)){
+                include $file;
+        }else{
+                include "./front/main.php";
+        }
+
+        ?>
+        </div>
         <div id="bottom" style="line-height:70px;background:url(icon/bot.png); color:#FFF;" class="ct">
         	頁尾版權 :        </div>
     </div>

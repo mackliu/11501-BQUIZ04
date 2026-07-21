@@ -122,3 +122,4 @@ function to($url){
 
 
 $Mem=new DB('members');
+$Admin=new DB('admin');

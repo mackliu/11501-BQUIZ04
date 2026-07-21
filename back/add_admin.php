@@ -14,19 +14,19 @@
             <td class="tt ct">權限</td>
             <td class="pp">
                 <div>
-                    <input type="checkbox" name="pr[]" value="pr">商品分類與管理
+                    <input type="checkbox" name="pr[]" value="1">商品分類與管理
                 </div>
                 <div>
-                    <input type="checkbox" name="pr[]" value="pr">訂單管理
+                    <input type="checkbox" name="pr[]" value="2">訂單管理
                 </div>
                 <div>
-                    <input type="checkbox" name="pr[]" value="pr">會員管理
+                    <input type="checkbox" name="pr[]" value="3">會員管理
                 </div>
                 <div>
-                    <input type="checkbox" name="pr[]" value="pr">頁尾版權區管理
+                    <input type="checkbox" name="pr[]" value="4">頁尾版權區管理
                 </div>
                 <div>
-                    <input type="checkbox" name="pr[]" value="pr">最新消息管理
+                    <input type="checkbox" name="pr[]" value="5">最新消息管理
                 </div>
             </td>
         </tr>

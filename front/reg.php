@@ -30,8 +30,8 @@
     </tr>
 </table>
 <div class="ct">
-    <button>註冊</button>
-    <button>重置</button>
+    <button onclick="reg()">註冊</button>
+    <button onclick="resetForm()">重置</button>
 </div>
 <script>
 function chkAcc(){
@@ -44,4 +44,30 @@ function chkAcc(){
         }
     })
 }    
+
+function reg(){
+    let acc=$("#acc").val();
+    $.get("./api/chk_acc.php",{acc},(res)=>{
+        if(parseInt(res)>0 || acc=='admin'){
+            alert("帳號已存在")
+        }else{
+            let user={
+                acc:$("#acc").val(),
+                name:$("#name").val(),
+                pw:$("#pw").val(),
+                tel:$("#tel").val(),
+                addr:$("#addr").val(),
+                email:$("#email").val(),
+            }
+
+            $.post("./api/reg.php",user,()=>{
+                location.href='?do=login'
+            })
+        }
+    })
+}
+
+function resetForm(){
+    $("#acc,#name,#pw,#tel,#email,#addr").val('')
+}
 </script>

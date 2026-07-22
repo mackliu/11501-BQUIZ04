@@ -12,31 +12,19 @@
     <button onclick="addMid()">新增</button>
 </div>
 <div class="type-list">
-    <table class="all">
-        <tr class="tt">
-            <td></td>
-            <td>
-                <button>修改</button>
-                <button>刪除</button>
-            </td>
-        </tr>
-        <tr class="pp">
-            <td></td>
-            <td>
-                <button>修改</button>
-                <button>刪除</button>
-            </td>
-        </tr>
-    </table>
+
 </div>
 <script>
-getBigs();    
+getBigs();
+getTypeList();
+
 function addBig(){
     let big=$("#big").val()
     $.post("./api/save_type.php",{'name':big,
                                'main_id':0},(res)=>{
         $("#big").val('')
         getBigs()
+        getTypeList()
     })
 }
 function addMid(){
@@ -45,11 +33,12 @@ function addMid(){
     $.post("./api/save_type.php",{'name':mid,
                                'main_id':main_id},(res)=>{
         $("#mid").val('')
+        getTypeList()
     })
 }
 
 /* 可以合併兩個方法為一個
- 
+
   function addType(type){
     let name='';
     let main_id=0;
@@ -65,11 +54,16 @@ function addMid(){
     $.post("./api/save_type.php",{name,main_id},(res)=>{
         $("#mid,#big").val('')
         getBigs()
+        getTypeList()
     })
 
 } */
 
-
+function getTypeList(){
+    $.get("./api/get_type_list.php",(list)=>{
+        $(".type-list").html(list)
+    })
+}
 function getBigs(){
     $.get("./api/get_bigs.php",(bigs)=>{
         $("#bigSelect").html(bigs);

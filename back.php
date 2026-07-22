@@ -1,4 +1,9 @@
 <?php include_once "./api/db.php";
+if(!isset($_SESSION['admin'])){
+    to('index.php');
+    exit();
+}
+
 $sys=$Admin->find(['acc'=>$_SESSION['admin']]);
 $sys['pr']=unserialize($sys['pr']);
 

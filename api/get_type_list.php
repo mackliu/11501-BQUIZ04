@@ -9,7 +9,7 @@
         <tr class="tt">
             <td><?= $big['name'] ?></td>
             <td>
-                <button onclick="editType(<?= $big['id'] ?>)">修改</button>
+                <button onclick="editType('<?= $big['name'] ?>',<?= $big['id'] ?>)">修改</button>
                 <button onclick="del('Type',<?= $big['id'];?>)">刪除</button>
             </td>
         </tr>
@@ -21,7 +21,7 @@
         <tr class="pp">
             <td class='ct'><?= $mid['name'] ?></td>
             <td>
-                <button onclick="editType(<?= $mid['id'] ?>)">修改</button>
+                <button onclick="editType('<?= $mid['name'] ?>',<?= $mid['id'] ?>)">修改</button>
                 <button onclick="del('Type',<?= $mid['id'] ?>)">刪除</button>
             </td>
         </tr>
@@ -32,3 +32,15 @@
          endforeach ;?>
         
     </table>
+
+    <script>
+    function editType(type,id){
+     let newType=prompt('請輸入要修改的分類名稱',type);
+     //console.log(typeof(newType))
+     if(typeof(newType)=='string'){
+            $.post('./api/save_type.php',{name:newType,id},()=>{
+                getTypeList()
+            })
+     }
+    }
+    </script>

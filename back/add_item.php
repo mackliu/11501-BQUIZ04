@@ -53,3 +53,26 @@
         <input type="button" value="返回">
     </div>
  </form>
+
+<script>
+getBigs()
+
+$("#big").on('change',function(){
+    getMid($(this).val())
+})
+
+
+function getBigs(){
+    $.get("./api/get_bigs.php",(bigs)=>{
+        $("#big").html(bigs);
+        getMid($("#big").val())
+    })
+}
+
+
+function getMid(big){
+    $.get("./api/get_mids.php",{big},(mids)=>{
+        $("#mid").html(mids);
+    })
+}
+</script>

@@ -50,9 +50,38 @@ $item=$Item->find($_GET['id']);
         </tr>
     </table>
     <div class="ct">
-        <input type="hidden" name="id" value=''>
+        <input type="hidden" name="id" value='<?= $item['id'] ?>'>
         <input type="submit" value="修改">
         <input type="reset" value="重置">
         <input type="button" value="返回">
     </div>
  </form>
+ 
+<script>
+getBigs()
+
+
+let selectedStatus=true;
+
+$("#big").on('change',function(){
+    getMid($(this).val())
+})
+
+function getBigs(){
+    $.get("./api/get_bigs.php",(bigs)=>{
+        $("#big").html(bigs);
+        $("#big option[value=<?= $item['big'] ?>]").prop('selected',true)
+        getMid($("#big").val())
+    })
+}
+
+function getMid(big){
+    $.get("./api/get_mids.php",{big},(mids)=>{
+        $("#mid").html(mids);
+        if(selectedStatus){ //增加狀態判斷,避免中分類選單一直選到商品的中分類項目,可不寫這段判斷
+            $("#mid option[value=<?= $item['mid'] ?>]").prop('selected',true)
+            selectedStatus=false;
+        }
+    })
+}
+</script>

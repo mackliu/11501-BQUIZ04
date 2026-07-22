@@ -2,7 +2,7 @@
 <div class="ct">
     <label for="big">新增大分類</label>
     <input type="text" name="big" id="big">
-    <button>新增</button>
+    <button onclick="addBig()">新增</button>
 </div>
 <!-- div.ct>select+input:text+button -->
  <div class="ct">
@@ -29,6 +29,24 @@
         </tr>
     </table>
 </div>
+<script>
+getBigs();    
+function addBig(){
+    let big=$("#big").val()
+    $.post("./api/save_type.php",{'name':big,
+                               'main_id':0},(res)=>{
+        $("#big").val('')
+        getBigs()
+    })
+}
+function getBigs(){
+    $.get("./api/get_bigs.php",(bigs)=>{
+        $("#bigSelect").html(bigs);
+    })
+}    
+</script>
+
+
 
 <h2 class="ct">商品管理</h2>
 <div class="ct">

@@ -9,7 +9,7 @@
     <label for="bigSelect">新增中分類</label>
     <select name="big_select" id="bigSelect"></select>
     <input type="text" name="mid" id="mid">
-    <button>新增</button>
+    <button onclick="addMid()">新增</button>
 </div>
 <div class="type-list">
     <table class="all">
@@ -39,6 +39,37 @@ function addBig(){
         getBigs()
     })
 }
+function addMid(){
+    let mid=$("#mid").val()
+    let main_id=$("#bigSelect").val()
+    $.post("./api/save_type.php",{'name':mid,
+                               'main_id':main_id},(res)=>{
+        $("#mid").val('')
+    })
+}
+
+/* 可以合併兩個方法為一個
+ 
+  function addType(type){
+    let name='';
+    let main_id=0;
+    switch(type){
+        case 'big':
+            name=$("#big").val();
+        break;
+        case 'mid':
+            name=$("#mid").val();
+            main_id=$("#bigSelect").val()
+        break;
+    }
+    $.post("./api/save_type.php",{name,main_id},(res)=>{
+        $("#mid,#big").val('')
+        getBigs()
+    })
+
+} */
+
+
 function getBigs(){
     $.get("./api/get_bigs.php",(bigs)=>{
         $("#bigSelect").html(bigs);

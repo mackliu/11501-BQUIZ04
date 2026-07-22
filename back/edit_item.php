@@ -1,3 +1,7 @@
+<?php 
+$item=$Item->find($_GET['id']);
+?>
+
 <h2 class="ct">修改商品</h2>
 <!-- form:post>table.all>tr*9>td.tt.ct+td.pp>input:text -->
  <form action="./api/save_item.php" method="post" enctype="multipart/form-data">
@@ -16,25 +20,23 @@
         </tr>
         <tr>
             <td class="tt ct">商品編號</td>
-            <td class="pp">
-                
-            </td>
+            <td class="pp"><?= $item['no']; ?></td>
         </tr>
         <tr>
             <td class="tt ct">商品名稱</td>
-            <td class="pp"><input type="text" name="name" id="name"></td>
+            <td class="pp"><input type="text" name="name" id="name" value="<?= $item['name'] ?>"></td>
         </tr>
         <tr>
             <td class="tt ct">商品價格</td>
-            <td class="pp"><input type="text" name="price" id="price"></td>
+            <td class="pp"><input type="text" name="price" id="price" value="<?= $item['price'] ?>"></td>
         </tr>
         <tr>
             <td class="tt ct">規格</td>
-            <td class="pp"><input type="text" name="spec" id="spec"></td>
+            <td class="pp"><input type="text" name="spec" id="spec" value="<?= $item['spec'] ?>"></td>
         </tr>
         <tr>
             <td class="tt ct">庫存量</td>
-            <td class="pp"><input type="text" name="qt" id="qt"></td>
+            <td class="pp"><input type="text" name="qt" id="qt" value="<?= $item['qt'] ?>"></td>
         </tr>
         <tr>
             <td class="tt ct">商品圖片</td>
@@ -43,7 +45,7 @@
         <tr>
             <td class="tt ct">商品介紹</td>
             <td class="pp">
-                <textarea name="intro" id="intro"></textarea>
+                <textarea name="intro" id="intro"><?= $item['intro'] ?></textarea>
             </td>
         </tr>
     </table>

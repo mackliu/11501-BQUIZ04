@@ -103,3 +103,11 @@ function getBigs(){
     </tr>
     <?php endforeach ;?>
 </table>
+<script>
+
+function sh(type,id)    {
+    $.post("./api/show.php",{type,id},()=>{
+        location.reload()
+    })
+}
+</script>

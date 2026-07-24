@@ -16,7 +16,7 @@
         <td><?= date("Y/m/d",strtotime($mem['created_at'])); ?></td>
         <td>
             <button onclick="location.href='?do=edit_mem&id=<?= $mem['id'] ?>'">修改</button>
-            <button onclick="del(<?= $mem['id']; ?>)">刪除</button>
+            <button onclick="del('Mem',<?= $mem['id']; ?>)">刪除</button>
         </td>
     </tr>
     <?php  endforeach ;?>

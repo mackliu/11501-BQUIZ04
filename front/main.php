@@ -45,7 +45,7 @@ if($type_id!=0){
             <tr>
                 <td class="pp">
                     價錢:<?= $item['price'] ?>
-                    <img src="./icon/0402.jpg" style="float:right">
+                    <img src="./icon/0402.jpg" style="float:right" onclick="location.href='?do=buycart'">
                 </td>
             </tr>
             <tr>

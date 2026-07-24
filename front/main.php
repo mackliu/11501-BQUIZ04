@@ -20,10 +20,39 @@ if($type_id!=0){
  }
 }
 
-
-
-
 ?>
 
 <h2><?= $nav_str ?></h2>
-<?php dd($items);?>
+<?php foreach($items as $item):?>
+
+<div class="all" style='display:flex;height:180px'>
+    <div style="width:35%;display:flex;align-items:center;justify-content:center" class='pp'>
+        <table>
+            <tr>
+                <td><img src="./upload/<?= $item['img'] ?>" style="width:180px;height:120px;"></td>
+            </tr>
+        </table>
+    </div>
+    <div style="width:65%">
+        <table style='height:100%'>
+            <tr>
+                <td class="tt ct"><?= $item['name'] ?></td>
+            </tr>
+            <tr>
+                <td class="pp">
+                    價錢:<?= $item['price'] ?>
+                    <img src="./icon/0402.jpg" style="float:right">
+                </td>
+            </tr>
+            <tr>
+                <td class="pp">規格:<?= $item['spec'] ?></td>
+            </tr>
+            <tr>
+                <td class="pp">簡介:<?= $item['intro'] ?></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<?php endforeach;?>    
+

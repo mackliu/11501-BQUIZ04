@@ -37,19 +37,19 @@
                </div>
         <div id="left" class="ct">
         	<div style="min-height:400px;">
-                <a href="">全部商品</a>
+                <a href="?type=0">全部商品</a>
                 <?php 
                 $bigs=$Type->all(['main_id'=>0]);
                 foreach($bigs as $big):
                   echo "<div class='ww'>";
                 ?>
-                <a href=""><?= $big['name'] ?></a>
+                <a href="?type=<?= $big['id'] ?>"><?= $big['name'] ?></a>
                 <?php if($Type->count(['main_id'=>$big['id']])>0):
                         $mids=$Type->all(['main_id'=>$big['id']]);
                         echo "<div class='s'>";
                         foreach($mids as $mid):
                     ?>
-                    <a href=""><?= $mid['name'] ?></a>
+                    <a href="?type=<?= $mid['id'] ?>"><?= $mid['name'] ?></a>
                 <?php 
                     endforeach;
                     echo "</div>";

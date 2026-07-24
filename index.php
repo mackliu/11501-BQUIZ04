@@ -41,16 +41,20 @@
                 <?php 
                 $bigs=$Type->all(['main_id'=>0]);
                 foreach($bigs as $big):
+                  echo "<div class='ww'>";
                 ?>
                 <a href=""><?= $big['name'] ?></a>
                 <?php if($Type->count(['main_id'=>$big['id']])>0):
                         $mids=$Type->all(['main_id'=>$big['id']]);
+                        echo "<div class='s'>";
                         foreach($mids as $mid):
                     ?>
                     <a href=""><?= $mid['name'] ?></a>
                 <?php 
                     endforeach;
+                    echo "</div>";
                 endif;
+                echo "</div>";
             endforeach;?>
         	</div>
                 <span>

@@ -99,14 +99,30 @@ input[type=text],input[type=password]
 {
 	width:170px;
 }
+div.ww{
+	/* position:relative; */
+}
 .s
 {
 	display:none;
+	/* position:absolute;
+	left:120px;
+	top :30px;
+	z-index:99;
+	width:100%; */
+}
+
+#left .s a{
+	background:#5eff2d;
+	color:#005822;
+	/* margin-left:20px; */
+
 }
 div.ww:hover > div.s
 {
 	display:block;
 }
+
 .sb button
 {
 	font-size:12px;

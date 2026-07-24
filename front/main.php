@@ -29,7 +29,11 @@ if($type_id!=0){
     <div style="width:35%;display:flex;align-items:center;justify-content:center" class='pp'>
         <table>
             <tr>
-                <td><img src="./upload/<?= $item['img'] ?>" style="width:180px;height:120px;"></td>
+                <td>
+                    <a href="?do=detail&id=<?= $item['id'] ?>">
+                        <img src="./upload/<?= $item['img'] ?>" style="width:180px;height:120px;">
+                    </a>
+                </td>
             </tr>
         </table>
     </div>
@@ -48,7 +52,7 @@ if($type_id!=0){
                 <td class="pp">規格:<?= $item['spec'] ?></td>
             </tr>
             <tr>
-                <td class="pp">簡介:<?= $item['intro'] ?></td>
+                <td class="pp">簡介:<?= mb_substr($item['intro'],0,25) ?>...</td>
             </tr>
         </table>
     </div>

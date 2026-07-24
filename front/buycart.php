@@ -1,4 +1,12 @@
 <?php 
+/* if(!isset($_SESSION['cart'])){
+    $_SESSION['cart'];
+} */
+
+if(isset($_GET['item'])){
+    $_SESSION['cart'][$_GET['item']]=$_GET['qt'];
+}
+
 if(!isset($_SESSION['mem'])){
     to("?do=login");
     exit();
@@ -7,5 +15,7 @@ if(!isset($_SESSION['mem'])){
 
 <h2 class="ct"><?= $_SESSION['mem'] ?>的購物車</h2>
 
-購買<?= $_GET['item'] ?>,數量<?= $_GET['qt'] ?>
+<?php
+
+dd($_SESSION['cart']);
 

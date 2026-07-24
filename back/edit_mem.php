@@ -11,7 +11,7 @@
         </tr>
         <tr>
             <td class="tt ct">密碼</td>
-            <td class="pp"><?= $mem['pw'] ?></td>
+            <td class="pp"><?= str_repeat("*",strlen($mem['pw'])) ?></td>
         </tr>
         <tr>
             <td class="tt ct">姓名</td>

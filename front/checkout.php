@@ -59,11 +59,14 @@ function send(){
         name:$("#name").val(),
         email:$("#email").val(),
         addr:$("#addr").val(),
-        tel:$("#tel").val()
+        tel:$("#tel").val(),
+        sum:<?= $sum ?>,
     }
 
-    $.post("./api/checkout.php",user,()=>{
+    $.post("./api/checkout.php",user,(res)=>{
+        //console.log(res)
         alert("訂購成功\n感謝您的選購")
+        location.href='index.php';
     })
 }    
 </script>

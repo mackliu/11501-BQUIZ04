@@ -9,16 +9,26 @@
         <td>下單時間</td>
         <td>操作</td>
     </tr>
+    <?php 
+    $orders=$Order->all();
+    foreach($orders as $order):
+    ?>
     <tr class="pp ct">
         <td>
-            <a href=".?do=detail&id="></a>
+            <a href="back.php?do=detail&id=<?= $order['id'] ?>">
+                <?= $order['no'] ?>
+            </a>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><?= $order['sum'] ?></td>
+        <td><?= $order['account'] ?></td>
+        <td><?= $order['name'] ?></td>
+        <td><?= date("Y/m/d",strtotime($order['created_at'])) ?></td>
         <td>
-            <button onclick="del('Order')">刪除</button>
+            <button onclick="del('Order',<?= $order['id'] ?>)">刪除</button>
         </td>
     </tr>
+    <?php 
+    endforeach;
+
+    ?>
  </table>

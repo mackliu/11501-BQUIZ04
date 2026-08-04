@@ -13,14 +13,7 @@
     <tr>
         <td class="tt ct">驗證碼</td>
         <td class="pp">
-            <span>
-            <?php
-                $a=rand(10,99);
-                $b=rand(10,99);
-                $_SESSION['ans']=$a+$b;
-                echo " $a + $b =";
-            ?>
-            </span>
+            <img src="#" alt="" id="captcha" onclick="getCode()"></img>
             <input type="text" name="code" id="code" value="">
         </td>
     </tr>
@@ -29,7 +22,35 @@
     <button onclick="send()">確認</button>
 </div>
 <script>
+getCode();
+function getCode(){
+    $.get("./api/captcha_image.php?reload=1",(res)=>{
+        if(res.success){
+            $("#captcha").attr("src",res.image)
+        }
+    })
+}
 function send(){
+    let captcha=$("#code").val();
+    let user={acc:$("#acc").val(),
+               pw:$("#pw").val()}
+    $.post("./api/captcha_verify.php",{captcha},(res)=>{
+        if(parseInt(res)){
+            $.get("./api/chk_pw.php",user,(res)=>{
+                if(parseInt(res)){
+                    location.href='index.php';
+                }else{
+                    alert("帳號或密碼錯誤\n請重新登入")
+                    location.reload()        
+                }
+            })
+        }else{
+            alert("對不起，您輸入的驗證碼有誤\n請重新登入")
+            location.reload()
+        }
+    })               
+}
+/* function send(){
     let code=$("#code").val();
     let user={acc:$("#acc").val(),
                pw:$("#pw").val()}
@@ -48,5 +69,5 @@ function send(){
             location.reload()
         }
     })               
-}
+} */
 </script>
